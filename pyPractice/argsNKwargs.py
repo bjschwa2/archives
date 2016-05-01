@@ -1,4 +1,6 @@
 
+global master
+master = []
 
 def printlist(list, *args, **kwargs):
 
@@ -16,21 +18,20 @@ def recursiveprint(*args, **kwargs):
 					print(innerlist)
 
 def createLists(num):
-	master = []
+
 	if num == 0:
-		return master
+		return 0
 
 	for i in range(0,num):
 		small = []
-		for j in range(0,i):
+		for j in range(0,i+1):
 			small.append(j)
 		master.append(small)
+	createLists(i)
 
-	createLists(num-1)
-	print (num)
+createLists(100)
+lists = [[1,[12,[1000,[14,15,[10000]]]],2,4],[1,44,53],[0,123,2]]
+print(lists)
+print (master)
 
-list = createLists(5)
-print (list)
-
-lists = [[1,12,2,4],[1,44,53],[0,123,2]]
-recursiveprint(lists)
+recursiveprint(lists,master)
